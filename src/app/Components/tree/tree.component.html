@@ -15,9 +15,9 @@
         <tree-root [nodes]="nodes" [options]="options">
           <ng-template #treeNodeTemplate let-node let-index="index">
             <span>{{ node.data.name }}</span>
-             <button class="btn btn-success m-2" (click)="modalService.open(ADDNODE, { size: 'lg',centered:true });AddChild(node)"> <i class="fas fa-plus"></i></button>
-             <button class="btn btn-danger m-2 " (click)="modalService.open(DeleteModal, { size: 'md',centered:true });del(node)"><i class="fas fa-minus"></i></button>
-             <button class="btn btn-primary m-2 " (click)="modalService.open(ADDNODE, { size: 'lg',centered:true });save(node)"><i class="fas fa-pencil-alt"></i></button>
+             <button class="btn btn-success m-1 py-0 px-1" (click)="modalService.open(ADDNODE, { size: 'lg',centered:true });AddChild(node)"> <i class="fas fa-plus"></i></button>
+             <button class="btn btn-danger m-1 py-0 px-1" (click)="modalService.open(DeleteModal, { size: 'md',centered:true });del(node)"><i class="fas fa-minus"></i></button>
+             <button class="btn btn-primary m-1 py-0 px-1" (click)="modalService.open(ADDNODE, { size: 'lg',centered:true });save(node)"><i class="fas fa-pencil-alt"></i></button>
            </ng-template>
         </tree-root>
       </div>

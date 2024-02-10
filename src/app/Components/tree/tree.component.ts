@@ -27,9 +27,12 @@ export class TreeComponent implements OnInit,OnDestroy   {
   SubscriptionArr: Subscription[] = [];
   nodes: TreeNode[] = [
   ];
-  options: TreeModule = {
-    displayField: 'name',
-    childrenField: 'children'
+
+  options = {
+    displayField: 'name' ,
+    childrenField: 'children',
+    allowDrag: true,
+    allowDrop: true
   };
    TreeItem : TreeItem = {
      id: '',
@@ -47,12 +50,10 @@ export class TreeComponent implements OnInit,OnDestroy   {
     this.GetAll();
   }
 
-
   GetAll(){
     let CallApi:Subscription=this._Apiservice.get("Tree/build",true).subscribe({
       next:(res:ResResult)=>{
         if(res.isSuccssed == true && res.obj != null){
-         console.log(res) ;
          this.nodes = res.obj ;
         }else {
           this.toastr.error(res.message)
@@ -65,7 +66,7 @@ export class TreeComponent implements OnInit,OnDestroy   {
   Send(ConfirmModal:any){
     if(this.TreeItem.name.trim() == ''){
     this.modalService.open(ConfirmModal, { size: 'md',centered:true })
-    this._Apiservice.ErrorMassage = "برجاء ادخال الاسم"
+    this._Apiservice.ErrorMassage = "Enter Name"
     return
     }
     if(this.TreeItem.id == ''){
