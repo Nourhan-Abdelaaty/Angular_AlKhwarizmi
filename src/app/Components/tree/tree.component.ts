@@ -32,8 +32,26 @@ export class TreeComponent implements OnInit,OnDestroy   {
     displayField: 'name' ,
     childrenField: 'children',
     allowDrag: true,
-    allowDrop: true
+    allowDrop: true,
+
   };
+  onMoveNode($event: { node: TreeItem; to: { parent: { name: any; id :any }; index: any; }; }) {
+       $event.node.parentId = $event.to.parent.id ;
+       let CallApi:Subscription = this._Apiservice.put('Tree',$event.node,true).subscribe({
+        next:(res:ResResult)=>{
+          if(res.isSuccssed && res.obj != null){
+            this.toastr.success("UpdateSuccess")
+            this.GetAll()
+            this.modalService.dismissAll()
+            this.ResetData()
+          }else {
+            this.toastr.error(res.message)
+          }
+        }
+      })
+    this.SubscriptionArr.push(CallApi)
+  }
+
    TreeItem : TreeItem = {
      id: '',
      name: '',
@@ -135,6 +153,7 @@ this.TreeItem = node ;
       children: []
     }
   }
+
   ngOnDestroy(): void {
     for (let i = 0; i < this.SubscriptionArr.length; i++) {
         this.SubscriptionArr[i].unsubscribe()
