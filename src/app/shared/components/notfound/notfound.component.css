@@ -1,0 +1,55 @@
+
+.logout {
+  cursor: pointer;
+}
+.dropdown-toggle::after {
+display: none !important;
+}
+.d-inline-block {
+  display:  inline-block !important;
+}
+.SectionNotFound {
+  background-color: #454d55 !important;
+}
+
+.not-found {
+  width: 560px;
+  height: 225px;
+  margin: auto !important;
+}
+.starry-sky {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.search-icon {
+  display: inline-block;
+}
+.notfound-copy {
+  color: #fff;
+}
+h1 {
+   font-weight: 700;
+  font-size: 40px;
+}
+/* change to alternating star opacities */
+.all-stars {
+  animation: blinkblink 7s linear infinite;
+}
+
+@keyframes blinkblink {
+  50% { opacity: 0.1; }
+}
+input[type=text] {
+  color: #fff;
+  background-color: #0a1821;
+  padding:5px;
+  border: none;
+  border-bottom:2px solid #ccc;
+  font-size: 18px;
+}
+input[type=text]:focus {
+  border-color:none;
+  border-bottom:2px solid #ccc;
+  }
